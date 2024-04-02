@@ -16,7 +16,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /*border: 1px solid black;*/
+  border: 1px solid black;
 }
 
 html {
@@ -34,6 +34,9 @@ h1 {
 }
 nav {
   background-color: var(--background_1);
+  max-width: var(--desktop-width);
+  margin: 0 auto;
+  width: 100%;
   padding: 10px;
   display: flex;
   justify-content: space-evenly;
@@ -43,11 +46,21 @@ nav {
 .nav-item {
   color: var(--text_color_2);
   padding: 10px;
-  display: block;
 }
+
+@media screen and (max-width: 768px) {
+  .nav-item {
+    display: none;
+  }
+}
+
+/* zde ještě potřeba přidat nav iconu pro zobrazení při šířce <768px*/
+
 .headline {
   position: relative;
   width: 100%;
+  max-width: var(--desktop-width);
+  margin: 0 auto;
   height: 40vw;
   min-height: 400px;
   background-image: url(./images/scott-goodwill-y8Ngwq34_Ak-unsplash.jpg);
@@ -66,25 +79,23 @@ nav {
   width: 100%;
 }
 .about-us {
-  background-color: var(--background_4);
-  border: 1px solid red;
+  max-width: var(--desktop-width);
+  margin: 0 auto;
   position: relative;
 }
 
 .wrapper-about-us {
-  max-width: var(--desktop-width);
   margin: 40px auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  align-items: stretch;
-  gap: 10px;
   padding: 10px;
 }
 
 @media screen and (max-width: 992px) {
   .wrapper-about-us {
     justify-content: center;
+    gap: 20px;
   }
 }
 
@@ -94,26 +105,27 @@ nav {
 }
 
 .about-us-img-wrapper {
-  background-color: red;
-  position: relative;
-  width: 450px;
+  max-width: 450px;
   max-height: 300px;
 }
 
 .about-us-img {
-  object-fit: scale-down;
-  max-height: 300px;
-  width: 450px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-@media screen and (max-width: 992px) {
+
+/* @media screen and (max-width: 992px) {
   .about-us-img {
     max-width: 100%;
   }
-}
+} */
 
 .what-we-do {
   background-color: var(--background_1);
   padding: var(--padding-sections);
+  max-width: var(--desktop-width);
+  margin: 0 auto;
 }
 
 .what-we-do-text-wrapper {
@@ -163,50 +175,182 @@ nav {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  max-width: 1000px;
+  max-width: var(--desktop-width);
   margin: 0 auto;
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
   .our-trips {
-    max-width: 400px;
+    flex-direction: column;
   }
 }
 
 .our-trips-img-wrapper {
-  max-width: 400px;
+  /* height: 250px;
+  width: 250px; */
+  width: calc(100% / 3.1);
   position: relative;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 768px) {
+  .our-trips-img-wrapper {
+    width: 100%;
+  }
+}
+
 .our-trips-img {
-  height: 280px;
-  width: 280px;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
 }
+.our-trips-nadpis-wrapper {
+  width: calc(100% / 3.1);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .our-trips-nadpis-wrapper {
+    width: 100%;
+  }
+}
+
 .nadpis-our-trips {
   color: var(--text_color_1);
   text-align: center;
   font-size: 30px;
-  height: 300px;
-  width: 300px;
-  position: relative;
-  top: 120px;
+  /* height: 100%;
+  width: 100%; */
 }
 
 .where-to-go {
   background-color: var(--background_2);
   padding: var(--padding-sections);
   max-width: var(--desktop-width);
+  display: flex;
+  gap: 10px;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 768px) {
+  .where-to-go {
+    /* max-width: 400px; */
+    flex-direction: column;
+  }
+}
+.where-to-go-nadpis-wrapper {
+  width: 25%;
+}
+
+@media screen and (max-width: 768px) {
+  .where-to-go-nadpis-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.where-to-go-text-wrapper {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .where-to-go-text-wrapper {
+    width: 100%;
+  }
+}
+
+.where-to-go-button {
+  width: 120px;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 .reviews {
-  background-color: var(--background_4);
   padding: var(--padding-sections);
   max-width: var(--desktop-width);
   margin: 0 auto;
+  text-align: center;
+}
+
+.reviews-intro {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.reviews-wrapper {
+  display: flex;
+  gap: 20px;
+  margin-top: 80px;
+}
+
+@media screen and (max-width: 992px) {
+  .reviews-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.review {
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.review-name {
+  font-weight: bold;
+}
+.review-img-wrapper {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.review-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.final-pictures-wrapper {
+  max-width: var(--desktop-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 992px) {
+  .final-pictures-wrapper {
+    flex-direction: column;
+  }
+}
+
+.final-pictures-img-wrapper {
+  width: 50%;
+}
+
+@media screen and (max-width: 992px) {
+  .final-pictures-img-wrapper {
+    width: 100%;
+  }
+}
+
+.final-picture-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 footer {
   background-color: var(--background_3);
   padding: var(--padding-sections);
+  max-width: var(--desktop-width);
+  margin: 0 auto;
 }
 p {
   font-size: 16px;
